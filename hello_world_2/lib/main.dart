@@ -66,10 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        backgroundColor: Colors.grey[850],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -93,19 +95,36 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+      floatingActionButton: Container(
+
+        width: 300,
+        height: 80,
+        margin: EdgeInsets.only(bottom: 200),
+        child: FloatingActionButton.extended(
+          //shape: ,
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          //icon: Icon(Icons.add),
+          label: Text(
+            'scream',
+            style: TextStyle(
+              fontSize: 50,
+            ),
+          ),
+          backgroundColor: Colors.grey[850],
+
+        ),
+
+
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
