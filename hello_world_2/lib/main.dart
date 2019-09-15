@@ -24,6 +24,7 @@ String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 =
 int score = 0;
 double botPadding = 40.0;
 bool botEnabled = false;
+int screamNumber = 0;
 
 class MyCustom extends StatefulWidget {
   MyCustom({Key key, this.title}) : super(key: key);
@@ -295,7 +296,7 @@ class _StatsPageState extends State<MyStats>{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               ListTile(
-                title: Text("Times Screamed: $screams", style: TextStyle(color: Colors.white)),
+                title: Text("Times Screamed:  $screamNumber", style: TextStyle(color: Colors.white)),
               ),
               ListTile(
                 title: Text("Characters typed: $score", style: TextStyle(color: Colors.white)),
@@ -462,7 +463,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     _text = _controller.text;
-    screams++;
 
     setState(() {
       levelCap = 50 * pow(2, level);
@@ -493,6 +493,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _assetsAudioPlayer.play();
     _controller.clear();
+
+    setState(() {
+      screamNumber++;
+    });
+
   }
 
   double findProgress(){
