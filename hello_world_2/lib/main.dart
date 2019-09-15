@@ -21,15 +21,17 @@ class MyCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Customize"),
+        backgroundColor: Colors.black,
+        title: Text("CUSTOMIZE"),
       ),
       body: Center(
         child: RaisedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Go back!'),
+          child: Text('GO BACK!'),
         ),
       ),
     );
@@ -85,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(
           widget.title,
+          style: TextStyle(fontFamily: "ponderosa"),
         ),
         backgroundColor: Colors.black,
       ),
@@ -100,12 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: new InputDecoration(
                   hintText: "Scream here",
                   hintStyle:
-                      TextStyle(color: Colors.grey),
+                      TextStyle(color: Colors.grey, fontFamily: "ponderosa"),
                   //fillColor: Colors.green,
                 ),
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 50,
+                  fontSize: 30,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 5,
@@ -172,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ListTile(
                 title: Text(
-                  'hello',
+                  'SHOP',
                   style: TextStyle(
                     color: Colors.white,
                   ),
