@@ -18,10 +18,55 @@ class MyApp extends StatelessWidget {
 }
 
 String sprite = "";
+String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
+    sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
 
 class MyCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    void _changeSpriteOne(){
+      if (level >= 1){
+        sprite = "images/image01.gif";
+        sprite1 = "images/image01.gif";
+      }
+    }
+
+    void _changeSpriteTwo(){
+      if (level >= 2) {
+        sprite = "images/image02.gif";
+        sprite2 = "images/image02.gif";
+      }
+    }
+
+    void _changeSpriteThree(){
+      if (level >= 3) {
+        sprite = "images/image03.gif";
+        sprite3 = "images/image03.gif";
+      }
+    }
+
+    void _changeSpriteFour(){
+      if (level >= 4) {
+        sprite = "images/image04.gif";
+        sprite4 = "images/image04.gif";
+      }
+    }
+
+    void _changeSpriteFive(){
+      if (level >= 5) {
+        sprite = "images/image05.gif";
+        sprite5 = "images/image05.gif";
+      }
+    }
+
+    void _changeSpriteSix(){
+      if (level >= 6) {
+        sprite = "images/image06.gif";
+        sprite6 = "images/image06.gif";
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -41,7 +86,7 @@ class MyCustom extends StatelessWidget {
                     child: FlatButton(
                         onPressed: _changeSpriteOne,
                         padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image01.gif')),
+                        child: Image.asset(sprite1)),
 
                   ),
                   new Container(
@@ -50,7 +95,7 @@ class MyCustom extends StatelessWidget {
                     child: FlatButton(
                         onPressed: _changeSpriteTwo,
                         padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image02.gif')),
+                        child: Image.asset(sprite2)),
                   ),
                   new Container(
                     width: 100.0,
@@ -58,7 +103,7 @@ class MyCustom extends StatelessWidget {
                     child: FlatButton(
                         onPressed: _changeSpriteThree,
                         padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image03.gif')),
+                        child: Image.asset(sprite3)),
                   ),
                 ]
               ),
@@ -72,7 +117,7 @@ class MyCustom extends StatelessWidget {
                       child: FlatButton(
                           onPressed: _changeSpriteFour,
                           padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image04.gif')),
+                          child: Image.asset(sprite4)),
 
                     ),
                     new Container(
@@ -81,7 +126,7 @@ class MyCustom extends StatelessWidget {
                       child: FlatButton(
                           onPressed: _changeSpriteFive,
                           padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image05.gif')),
+                          child: Image.asset(sprite5)),
                     ),
                     new Container(
                       width: 100.0,
@@ -89,7 +134,7 @@ class MyCustom extends StatelessWidget {
                       child: FlatButton(
                           onPressed: _changeSpriteSix,
                           padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image06.gif')),
+                          child: Image.asset(sprite6)),
                     ),
                   ]
               ),
@@ -100,46 +145,7 @@ class MyCustom extends StatelessWidget {
     );
   }
 
-  void _changeSpriteOne(){
-      if (level >= 1){
-          sprite = "images/image01.gif";
-      }
-  }
 
-  void _changeSpriteTwo(){
-      if (level >= 2) {
-        sprite = "images/image02.gif";
-
-      }
-  }
-
-  void _changeSpriteThree(){
-    if (level >= 3) {
-      sprite = "images/image03.gif";
-
-    }
-  }
-
-  void _changeSpriteFour(){
-    if (level >= 4) {
-      sprite = "images/image04.gif";
-
-    }
-  }
-
-  void _changeSpriteFive(){
-    if (level >= 5) {
-      sprite = "images/image05.gif";
-
-    }
-  }
-
-  void _changeSpriteSix(){
-    if (level >= 6) {
-      sprite = "images/image06.gif";
-
-    }
-  }
 }
 
 int level = 0;
@@ -289,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         score += _text.length;
-      });;
+      });
     }
 
     if (score >= levelCap) {
@@ -302,7 +308,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
       });
       _dialogLevel();
-    }
+
+  }
+
     _assetsAudioPlayer.play();
     _controller.clear();
   }
