@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         fontFamily: 'Ponderosa'
       ),
-      home: MyHomePage(title: 'Into the Void'),
+      home: MyHomePage(title: 'INTO THE VOID'),
     );
   }
 }
@@ -50,19 +50,35 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 child: DrawerHeader(
-                  child: Center(
+
+//                  child: Stack(
+//                    Align(
+//                      alignment: Alignment.bottomCenter,
+//                      child: ListTile(
+//                        title: Text('hello'),
+//                        onTap: () {
+//                          Navigator.pop(context);
+//                        },
+//                      ),
+//                    ),
+//                  ),
+
+
+                  child: Container(
                     child: Text(
                       "Level 1",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
+
                       ),
                     ),
+                  alignment: Alignment.bottomLeft,
+                    padding: EdgeInsets.all(20.0),
                   ),
 
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
-
                   decoration: BoxDecoration(
                     color: Colors.deepPurple[500],
                   ),
@@ -103,12 +119,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: FloatingActionButton.extended(
           //shape: ,
           onPressed: _incrementCounter,
-          tooltip: 'Increment',
+          tooltip: 'yeet your thoughts',
           //icon: Icon(Icons.add),
           label: Text(
-            'scream',
+            'SCREAM',
             style: TextStyle(
-              fontSize: 50,
+              fontSize: 40,
             ),
           ),
           backgroundColor: Colors.grey[850],
