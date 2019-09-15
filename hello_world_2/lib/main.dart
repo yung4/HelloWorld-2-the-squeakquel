@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -46,12 +47,25 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class Scream {
-  String scream;
-  Scream (scream){this.scream = scream;}
-}
-
 class _MyHomePageState extends State<MyHomePage> {
+
+  AssetsAudioPlayer _assetsAudioPlayer;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _assetsAudioPlayer = AssetsAudioPlayer();
+    _assetsAudioPlayer.open(
+      AssetsAudio(
+        asset: "longmii.mp3",
+        folder: "assets/",
+      ),
+    );
+    _assetsAudioPlayer.play();
+  }
+
+
   String _text = '';
 
   int score = 0;
@@ -64,10 +78,46 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _dialogB(){
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          backgroundColor: Color.fromRGBO(103, 58, 183, 50),
+          title: new Text("The Void Answers",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+
+          ),
+          content: new Text("Alert Dialog body",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+
+          ),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void onPressed() {
     _text = _controller.text;
-    print(_text);
-    _controller.clear();
     if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
@@ -78,9 +128,18 @@ class _MyHomePageState extends State<MyHomePage> {
       level++;
       score = 0;
     }
-    
+
     Firestore.instance.collection('screams').document().setData({'scream': _text});
+
+    _assetsAudioPlayer.play();
+    print(_text);
+    _controller.clear();
   }
+
+
+
+
+
 
   final TextEditingController _controller = new TextEditingController();
 
@@ -99,11 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Image(
-              image: new AssetImage("assets/banana.gif"),
-              height: 50,
-              width: 50,
-            ),
+
+
+
+
             Container(
               width: 400,
               child: TextField(
@@ -142,6 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.blue,
                   onPressed: () {
                     onPressed();
+                    _dialogB();
                   },
                   child: Text(
                     'SCREAM',
@@ -163,12 +222,22 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: DrawerHeader(
                   child: Container(
-                    child: Text(
-                      "Level " + level.toString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                    child: Column(
+                      children: <Widget>[
+                        new Image(
+                          image: new AssetImage("assets/boy.gif"),
+                          height: 50,
+                          width: 50,
+                        ),
+                        Text(
+                          "Level " + level.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+
                     ),
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.all(20.0),
@@ -176,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple[500],
+                    color: Colors.deepPurple[600],
                   ),
                 ),
               ),
