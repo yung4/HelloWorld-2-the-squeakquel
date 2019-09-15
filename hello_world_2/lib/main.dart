@@ -44,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
 
-        child: Center(
+        child: Container(
+          color: Colors.grey[900],
           child: Column(
             children: <Widget>[
               Container(
@@ -58,8 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
+
                   decoration: BoxDecoration(
                     color: Colors.deepPurple[500],
                   ),
@@ -67,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
               ListTile(
-                  title: Text('hello'),
+                  title: Text('hello',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                   onTap: () {
                     Navigator.pop(context);
                   },
