@@ -97,6 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            new Image(image: new AssetImage("assets/banana.gif")),
+
             Container(
               width: 400,
               child: TextField(
