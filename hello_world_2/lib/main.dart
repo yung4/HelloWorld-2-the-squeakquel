@@ -288,10 +288,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       children: <Widget>[
                         new Image(
-                          image: new AssetImage("assets/boy.gif"),
+
+                          image: new AssetImage("assets/boy$level.gif"),
                           height: 50,
                           width: 50,
                         ),
+
 
                         Padding(
                           padding: EdgeInsets.all(5),
@@ -337,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple[600],
+                    color: Color.fromRGBO(108, 58, 181, 1),
                   ),
                 ),
               ),
