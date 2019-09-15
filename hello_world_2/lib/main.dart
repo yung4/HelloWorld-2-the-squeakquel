@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'dart:math';
 
 void main() => runApp(MyApp());
@@ -46,11 +47,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  AssetsAudioPlayer _assetsAudioPlayer;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _assetsAudioPlayer = AssetsAudioPlayer();
+    _assetsAudioPlayer.open(
+      AssetsAudio(
+        asset: "mii.mp3",
+        folder: "assets/",
+      ),
+    );
+    _assetsAudioPlayer.playOrPause();
+  }
+
+  @override
+  void dispose() {
+    _assetsAudioPlayer = null;
+    super.dispose();
+  }
+
+
   String _text = '';
 
   int score = 0;
 
   int level = 0;
+
+
 
   void onChanged(String value) {
     setState(() {
@@ -79,6 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
@@ -91,11 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Image(
-              image: new AssetImage("assets/banana.gif"),
-              height: 50,
-              width: 50,
-            ),
+
+
+
             Container(
               width: 400,
               child: TextField(
@@ -155,16 +182,35 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: DrawerHeader(
                   child: Container(
-                    child: Text(
-                      "Level " + level.toString(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                    child: Column(
+                      children: <Widget>[
+                        new Image(
+                          image: new AssetImage("assets/boy.gif"),
+                          height: 50,
+                          width: 50,
+                        ),
+                        Text(
+                          "Level " + level.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+
                     ),
+
+
+
+
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.all(20.0),
+
+
                   ),
+
+
+
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
