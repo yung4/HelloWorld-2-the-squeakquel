@@ -196,14 +196,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  int gifIndex(int level){
-    if(level < 6){
-      return level;
-    }
-    else{
-      return 6;
-    }
-  }
 
   void _dialogB(){
     // flutter defined function
@@ -408,16 +400,20 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: <Widget>[
               Container(
+                height: 450,
                 child: DrawerHeader(
                   child: Container(
+
                     child: Column(
 
+
                       children: <Widget>[
+
                         new Image(
 
                           image: new AssetImage(sprite),
-                          height: 50,
-                          width: 50,
+                          height: 300,
+                          width: 300,
                         ),
 
 
@@ -459,7 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
 
                     ),
-                    alignment: Alignment.bottomLeft,
+
                     padding: EdgeInsets.all(20.0),
                   ),
                   margin: EdgeInsets.all(0.0),
@@ -475,6 +471,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     color: Colors.white,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 onTap: () {
                   Navigator.push(
