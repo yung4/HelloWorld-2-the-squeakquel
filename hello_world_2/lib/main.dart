@@ -31,6 +31,22 @@ class MyCustom extends StatefulWidget {
   _ShopPageState createState() => _ShopPageState();
 }
 
+class MySettings extends StatefulWidget {
+  MySettings({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class MyStats extends StatefulWidget {
+  MyStats({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _StatsPageState createState() => _StatsPageState();
+}
+
 int level = 0;
 
 class MyHomePage extends StatefulWidget {
@@ -51,7 +67,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image01.gif";
           sprite1 = "images/image01.gif";
         });
-
       }
     }
 
@@ -61,7 +76,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image02.gif";
           sprite2 = "images/image02.gif";
         });
-
       }
     }
 
@@ -71,7 +85,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image03.gif";
           sprite3 = "images/image03.gif";
         });
-
       }
     }
 
@@ -81,7 +94,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image04.gif";
           sprite4 = "images/image04.gif";
         });
-
       }
     }
 
@@ -91,7 +103,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image05.gif";
           sprite5 = "images/image05.gif";
         });
-
       }
     }
 
@@ -101,7 +112,6 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image06.gif";
           sprite6 = "images/image06.gif";
         });
-
       }
     }
 
@@ -125,7 +135,6 @@ class _ShopPageState extends State<MyCustom>{
                           onPressed: _changeSpriteOne,
                           padding: EdgeInsets.all(0.0),
                           child: Image.asset(sprite1)),
-
                     ),
                     new Container(
                       width: 100.0,
@@ -156,7 +165,6 @@ class _ShopPageState extends State<MyCustom>{
                           onPressed: _changeSpriteFour,
                           padding: EdgeInsets.all(0.0),
                           child: Image.asset(sprite4)),
-
                     ),
                     new Container(
                       width: 100.0,
@@ -176,7 +184,69 @@ class _ShopPageState extends State<MyCustom>{
                     ),
                   ]
               ),
+            ],
+          )
+      ),
+    );
+  }
+}
 
+class _StatsPageState extends State<MyStats>{
+  Widget build(BuildContext context) {
+    int avatarNum = level;
+
+    if(avatarNum>6) {
+      avatarNum = 6;
+    }
+
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(108, 58, 181, 1),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text("SETTINGS"),
+      ),
+      body: Center(
+          child: Column (
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ListTile(
+                title: Text("Times Screamed: 0", style: TextStyle(color: Colors.white)),
+              ),
+              ListTile(
+                title: Text("Characters typed: 0", style: TextStyle(color: Colors.white)),
+              ),
+              ListTile(
+                title: Text("Avatars Unlocked: $avatarNum", style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          )
+      ),
+    );
+  }
+}
+
+class _SettingsPageState extends State<MySettings>{
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(108, 58, 181, 1),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text("SETTINGS"),
+      ),
+      body: Center(
+          child: Column (
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ListTile(
+                title: Text("You're not supposed to be here.", style: TextStyle(color: Colors.white)),
+              ),
+              ListTile(
+                title: Text("This app was made by Emily Chen, Sabrina Eichenberger, Anna Kuruvilla, Henry Wu, and Chris Yung.", style: TextStyle(color: Colors.white)),
+              ),
+              ListTile(
+                title: Text("我沒有朋友", style: TextStyle(color: Colors.white)),
+              ),
             ],
           )
       ),
@@ -202,19 +272,11 @@ class _MyHomePageState extends State<MyHomePage> {
     _assetsAudioPlayer.play();
   }
 
-
   String _text = '';
-
   int score = 0;
-
   int levelCap = 50;
-
   int temp;
-
   double progress;
-
-  var planB = ['IU sucks', 'Boiler Up!', 'Hammer Down', 'hello world', 'Hello World 2019!', 'wo mei you peng you', '我沒有朋友', 'WEI SHEN ME', 'SHOUT INTO THE VOID', 'im so hungry', 'thank God for tea', 'cummins is great', 'we love agorize', 'my favorite night out is a night in', 'you have been heard. ', 'aiyah', 'wo bu zhi dao', '我可以上厠所麽？', 'firebase is a smoldering piece of garbage', 'why do i suck at coding', 'i have a math exam on monday pls help', "i'm really hungry"];
-
 
   void onChanged(String value) {
     setState(() {
@@ -245,7 +307,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     color: Colors.white,
                   ),
-
                 ),
 
                 content: new Text(snapshot.data.documents[rand(
@@ -290,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
           ),
-          content: new Text("You are now level $level",
+          content: new Text("You are now level $level!",
             style: TextStyle(
               color: Colors.white,
             ),
@@ -317,8 +378,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void onPressed() {
     _text = _controller.text;
 
-
-
     setState(() {
       levelCap = 50 * pow(2, level);
     });
@@ -333,19 +392,18 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     if (score >= levelCap) {
-
       temp = score - levelCap;
       score = temp;
       setState(() {
         level++;
         levelCap = 50 * pow(2, level);
-
       });
       _dialogLevel();
+    }
 
-  }
-
-    Firestore.instance.collection('screams').document().setData({'scream': _text});
+    if(_text.isNotEmpty) {
+      Firestore.instance.collection('screams').document().setData({'scream': _text});
+    }
 
     _assetsAudioPlayer.play();
     _controller.clear();
@@ -359,10 +417,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int findScore(){
     return score;
   }
-
-
-
-
 
 
   final TextEditingController _controller = new TextEditingController();
@@ -382,9 +436,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
-
-
 
             Container(
               width: 400,
@@ -444,7 +495,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: <Widget>[
               Container(
-                height: 450,
+                height: 350,
                 child: DrawerHeader(
                   child: Container(
 
@@ -511,12 +562,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ListTile(
                 title: Text(
-                  'SHOP',
+                  'CUSTOMIZE',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
                 ),
+                contentPadding: EdgeInsets.fromLTRB(0.0, 20, 0, 0),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -526,6 +578,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
+              ListTile(
+                title: Text('STATS', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyStats(),
+                    ),
+                  );
+                }
+              ),
+              ListTile(
+                  title: Text('SETTINGS', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MySettings(),
+                      ),
+                    );
+                  }
+              )
             ],
           ),
         ),
