@@ -180,6 +180,7 @@ class _ShopPageState extends State<MyCustom>{
           botEnabled = true;
           botPadding = 0;
           spriteBot = "images/image08.gif";
+          spriteQuestion = "images/image08.gif";
         });
       } else {
         _inValidLevel(10);
