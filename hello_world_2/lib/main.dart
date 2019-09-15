@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+String sprite = "";
+
 class MyCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,16 +29,120 @@ class MyCustom extends StatelessWidget {
         title: Text("CUSTOMIZE"),
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('GO BACK!'),
-        ),
+          child: Column (
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: FlatButton(
+                        onPressed: _changeSpriteOne,
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/image01.gif')),
+
+                  ),
+                  new Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: FlatButton(
+                        onPressed: _changeSpriteTwo,
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/image02.gif')),
+                  ),
+                  new Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: FlatButton(
+                        onPressed: _changeSpriteThree,
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/image03.gif')),
+                  ),
+                ]
+              ),
+
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteFour,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset('images/image04.gif')),
+
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteFive,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset('images/image05.gif')),
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteSix,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset('images/image06.gif')),
+                    ),
+                  ]
+              ),
+
+            ],
+          )
       ),
     );
   }
+
+  void _changeSpriteOne(){
+      if (level >= 1){
+          sprite = "images/image01.gif";
+      }
+  }
+
+  void _changeSpriteTwo(){
+      if (level >= 2) {
+        sprite = "images/image02.gif";
+
+      }
+  }
+
+  void _changeSpriteThree(){
+    if (level >= 3) {
+      sprite = "images/image03.gif";
+
+    }
+  }
+
+  void _changeSpriteFour(){
+    if (level >= 4) {
+      sprite = "images/image04.gif";
+
+    }
+  }
+
+  void _changeSpriteFive(){
+    if (level >= 5) {
+      sprite = "images/image05.gif";
+
+    }
+  }
+
+  void _changeSpriteSix(){
+    if (level >= 6) {
+      sprite = "images/image06.gif";
+
+    }
+  }
 }
+
+int level = 0;
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -70,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int score = 0;
 
-  int level = 0;
+
 
   int levelCap = 50;
 
@@ -107,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
           ),
-          content: new Text("Alert Dialog body",
+          content: new Text("You have been heard.",
             style: TextStyle(
               color: Colors.white,
             ),
@@ -301,7 +407,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new Image(
 
-                          image: new AssetImage("assets/boy" + gifIndex(level).toString() + ".gif"),
+                          image: new AssetImage(sprite),
                           height: 50,
                           width: 50,
                         ),
