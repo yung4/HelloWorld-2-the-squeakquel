@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String sprite = "";
+String sprite = "images/image07.gif";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
     sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
 
@@ -436,8 +436,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         new Image(
 
                           image: new AssetImage(sprite),
-                          height: 300,
-                          width: 300,
+                          height: 200,
+                          width: 200,
                         ),
 
 
