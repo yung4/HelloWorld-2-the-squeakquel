@@ -8,10 +8,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
         fontFamily: "Ponderosa"
       ),
       home: MyHomePage(title: 'INTO THE VOID'),
+    );
+  }
+}
+
+class MyCustom extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Customize"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
     );
   }
 }
@@ -28,6 +47,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _text = '';
 
+  int score = 0;
+
   void onChanged(String value) {
     setState(() {
       _text = value;
@@ -38,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _text = _controller.text;
     print(_text);
     _controller.clear();
+    score += _text.length;
   }
 
   final TextEditingController _controller = new TextEditingController();
@@ -74,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 50,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 5,
                 onChanged: (String value) {
                   onChanged(value);
                 },
@@ -143,7 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context)=> MyCustom(),
+                    ),
+                  );
                 },
               ),
             ],
