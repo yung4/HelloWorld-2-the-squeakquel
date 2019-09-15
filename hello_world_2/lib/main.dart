@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'dart:math';
@@ -73,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int levelCap = 50;
 
+  double progress;
+
   void onChanged(String value) {
     setState(() {
       _text = value;
@@ -119,16 +122,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     _text = _controller.text;
+
     levelCap = 50 * pow(2, level);
     print(_text.length);
+    print(levelCap);
     if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
+      print('pog');
     } else {
-      score += _text.length;
+      setState(() {
+        score += _text.length;
+      });;
     }
 
-    if (score > levelCap) {
+
+
+    if (score >= levelCap) {
       level++;
       score = 0;
     }
@@ -137,6 +147,15 @@ class _MyHomePageState extends State<MyHomePage> {
     print(_text);
     _controller.clear();
     print(score);
+  }
+
+  double findProgress(){
+    progress = score/levelCap;
+    return progress;
+  }
+
+  int findScore(){
+    return score;
   }
 
 
@@ -252,7 +271,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         LinearProgressIndicator(
 
-                          value: score/levelCap,
+                          value: findProgress(),
                           valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
 
                         ),
