@@ -71,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int level = 0;
 
+  int levelCap = 50;
+
   void onChanged(String value) {
     setState(() {
       _text = value;
@@ -117,13 +119,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     _text = _controller.text;
+    levelCap = 50 * pow(2, level);
+    print(_text.length);
     if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
     } else {
       score += _text.length;
     }
-    if (score > (50 * pow(2, level))) {
+
+    if (score > levelCap) {
       level++;
       score = 0;
     }
@@ -131,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _assetsAudioPlayer.play();
     print(_text);
     _controller.clear();
+    print(score);
   }
 
 
@@ -220,12 +226,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: DrawerHeader(
                   child: Container(
                     child: Column(
+
                       children: <Widget>[
                         new Image(
                           image: new AssetImage("assets/boy.gif"),
                           height: 50,
                           width: 50,
                         ),
+
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                        ),
+
                         Text(
                           "Level " + level.toString(),
                           style: TextStyle(
@@ -233,6 +245,30 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontSize: 20,
                           ),
                         ),
+
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                        ),
+
+                        LinearProgressIndicator(
+
+                          value: score/levelCap,
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+
+                        ),
+
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                        ),
+
+                        Text(
+                          score.toString() + "/" + levelCap.toString() + "EXP",
+                          style: TextStyle(
+                            color: Colors.greenAccent,
+                          ),
+                        ),
+
+
                       ],
 
                     ),
