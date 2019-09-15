@@ -65,10 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-
-
-
-
   String _text = '';
 
   int score = 0;
@@ -117,17 +113,16 @@ class _MyHomePageState extends State<MyHomePage> {
       level++;
       score = 0;
     }
-    _assetsAudioPlayer.play();
-  }
-      if (score >= (50 * pow(2, level))) {
-        level++;
-        score = 0;
-      }
-    }
 
+    _assetsAudioPlayer.play();
     print(_text);
     _controller.clear();
   }
+
+
+
+
+
 
   final TextEditingController _controller = new TextEditingController();
 
