@@ -17,26 +17,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyCustom extends StatelessWidget {
+String sprite = "";
+String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
+    sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
+
+class MyCustom extends StatefulWidget {
+  MyCustom({Key key, this.title}) : super(key: key);
+
+  final String title;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("CUSTOMIZE"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('GO BACK!'),
-        ),
-      ),
-    );
-  }
+  _ShopPageState createState() => _ShopPageState();
 }
+
+int level = 0;
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -45,6 +39,148 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _ShopPageState extends State<MyCustom>{
+  Widget build(BuildContext context) {
+
+    void _changeSpriteOne(){
+      if (level >= 1){
+        setState(() {
+          sprite = "images/image01.gif";
+          sprite1 = "images/image01.gif";
+        });
+
+      }
+    }
+
+    void _changeSpriteTwo(){
+      if (level >= 2) {
+        setState(() {
+          sprite = "images/image02.gif";
+          sprite2 = "images/image02.gif";
+        });
+
+      }
+    }
+
+    void _changeSpriteThree(){
+      if (level >= 3) {
+        setState(() {
+          sprite = "images/image03.gif";
+          sprite3 = "images/image03.gif";
+        });
+
+      }
+    }
+
+    void _changeSpriteFour(){
+      if (level >= 4) {
+        setState(() {
+          sprite = "images/image04.gif";
+          sprite4 = "images/image04.gif";
+        });
+
+      }
+    }
+
+    void _changeSpriteFive(){
+      if (level >= 5) {
+        setState(() {
+          sprite = "images/image05.gif";
+          sprite5 = "images/image05.gif";
+        });
+
+      }
+    }
+
+    void _changeSpriteSix(){
+      if (level >= 6) {
+        setState(() {
+          sprite = "images/image06.gif";
+          sprite6 = "images/image06.gif";
+        });
+
+      }
+    }
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("CUSTOMIZE"),
+      ),
+      body: Center(
+          child: Column (
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteOne,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite1)),
+
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteTwo,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite2)),
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteThree,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite3)),
+                    ),
+                  ]
+              ),
+
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteFour,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite4)),
+
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteFive,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite5)),
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteSix,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite6)),
+                    ),
+                  ]
+              ),
+
+            ],
+          )
+      ),
+    );
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -70,19 +206,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int score = 0;
 
-  int level = 0;
+
 
   int levelCap = 50;
 
-  double progress;
+  int temp;
 
-  var planB= ['man im really hungry', 'why is programming so hard', 'firebase is a smoldering piece of garbage', 'progrum', 'wo mei you peng you', 'watch out for the shooter', "it's 3 am and i want to sleep", 'WEI SHEN ME', 'hello world!', 'hello world 2019', 'cummins is great', 'stare into the abyss and the abyss stares back', 'stack overflow is literally my best friend', 'zzzzz', 'agorize is great', "when's dinner?", 'thank God for tea', 'Boiler Up!', 'Hammer Down!', 'IU sucks', 'i bleed black and gold', 'android > apple dont @ me', 'ni mei you peng you LOL', 'i dont even know what a firebase is', 'i need more dining dollars'];
+  double progress;
 
   void onChanged(String value) {
     setState(() {
       _text = value;
     });
   }
+
 
   void _dialogB(){
     // flutter defined function
@@ -98,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
           ),
-          content: new Text("你沒有朋友",
+          content: new Text("You have been heard.",
             style: TextStyle(
               color: Colors.white,
             ),
@@ -106,16 +243,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-//            new FlatButton(
-//              child: new Text("Close",
-//                style: TextStyle(
-//                  color: Colors.white,
-//                ),
-//              ),
-//              onPressed: () {
-//                Navigator.of(context).pop();
-//              },
-//            ),
+            new FlatButton(
+              child: new Text("Close",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ],
         );
       },
@@ -174,19 +311,22 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         score += _text.length;
-      });;
+      });
     }
 
     if (score >= levelCap) {
 
-      score = 0;
+      temp = score - levelCap;
+      score = temp;
       setState(() {
         level++;
         levelCap = 50 * pow(2, level);
 
       });
       _dialogLevel();
-    }
+
+  }
+
     _assetsAudioPlayer.play();
     _controller.clear();
   }
@@ -284,16 +424,20 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: <Widget>[
               Container(
+                height: 450,
                 child: DrawerHeader(
                   child: Container(
+
                     child: Column(
 
+
                       children: <Widget>[
+
                         new Image(
 
-                          image: new AssetImage("assets/boy$level.gif"),
-                          height: 50,
-                          width: 50,
+                          image: new AssetImage(sprite),
+                          height: 300,
+                          width: 300,
                         ),
 
 
@@ -335,7 +479,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
 
                     ),
-                    alignment: Alignment.bottomLeft,
+
                     padding: EdgeInsets.all(20.0),
                   ),
                   margin: EdgeInsets.all(0.0),
@@ -351,6 +495,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     color: Colors.white,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 onTap: () {
                   Navigator.push(
