@@ -21,14 +21,36 @@ String sprite = "";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
     sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
 
-class MyCustom extends StatelessWidget {
+class MyCustom extends StatefulWidget {
+  MyCustom({Key key, this.title}) : super(key: key);
+
+  final String title;
+
   @override
+  _ShopPageState createState() => _ShopPageState();
+}
+
+int level = 0;
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _ShopPageState extends State<MyCustom>{
   Widget build(BuildContext context) {
 
     void _changeSpriteOne(){
       if (level >= 1){
-        sprite = "images/image01.gif";
-        sprite1 = "images/image01.gif";
+        setState(() {
+          sprite = "images/image01.gif";
+          sprite1 = "images/image01.gif";
+        });
+
       }
     }
 
@@ -77,35 +99,35 @@ class MyCustom extends StatelessWidget {
           child: Column (
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-            new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteOne,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset(sprite1)),
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteOne,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite1)),
 
-                  ),
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteTwo,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset(sprite2)),
-                  ),
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteThree,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset(sprite3)),
-                  ),
-                ]
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteTwo,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite2)),
+                    ),
+                    new Container(
+                      width: 100.0,
+                      height: 100.0,
+                      child: FlatButton(
+                          onPressed: _changeSpriteThree,
+                          padding: EdgeInsets.all(0.0),
+                          child: Image.asset(sprite3)),
+                    ),
+                  ]
               ),
 
               new Row(
@@ -144,19 +166,6 @@ class MyCustom extends StatelessWidget {
       ),
     );
   }
-
-
-}
-
-int level = 0;
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
