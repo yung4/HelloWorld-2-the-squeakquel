@@ -227,13 +227,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return rng.nextInt(length);
   }
 
-  void _dialogB(){
+  void _dialogB() {
     // flutter defined function
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return new StreamBuilder<QuerySnapshot>(
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return new StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance.collection('screams').snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -245,28 +245,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.white,
                   ),
 
-          ),
-          content: new Text("You have been heard.",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-
-          ),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close",
-                style: TextStyle(
-                  color: Colors.white,
                 ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
+
+                content: new Text(snapshot.data.documents[rand(
+                    snapshot.data.documents.length)]['scream'],
+//              content: new Text("debug",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+
+                ),
+                actions: <Widget>[
+                  // usually buttons at the bottom of the dialog
+                  new FlatButton(
+                    child: new Text("Close",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
     );
   }
 
@@ -290,13 +295,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
                 ),
 
-                content: new Text(snapshot.data.documents[rand(snapshot.data.documents.length)]['scream'],
-//              content: new Text("debug",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-
-          ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
