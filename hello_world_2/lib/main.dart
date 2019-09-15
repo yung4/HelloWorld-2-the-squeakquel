@@ -58,20 +58,45 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _dialogB(){
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          backgroundColor: Color.fromRGBO(103, 58, 183, 50),
+          title: new Text("The Void Answers"),
+          content: new Text("Alert Dialog body"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void onPressed() {
     _text = _controller.text;
-    print(_text);
-    _controller.clear();
     if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
     } else {
       score += _text.length;
+      if (score >= (50 * pow(2, level))) {
+        level++;
+        score = 0;
+      }
     }
-    if (score > (50 * pow(2, level))) {
-      level++;
-      score = 0;
-    }
+
+    print(_text);
+    _controller.clear();
   }
 
   final TextEditingController _controller = new TextEditingController();
@@ -134,6 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.blue,
                   onPressed: () {
                     onPressed();
+                    _dialogB();
                   },
                   child: Text(
                     'SCREAM',
