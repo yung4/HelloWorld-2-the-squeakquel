@@ -20,8 +20,10 @@ class MyApp extends StatelessWidget {
 
 String sprite = "images/image07.gif";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
-    sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
+    sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif", spriteBot = "images/image07.gif";
 int score = 0;
+double botPadding = 40.0;
+bool botEnabled = false;
 
 class MyCustom extends StatefulWidget {
   MyCustom({Key key, this.title}) : super(key: key);
@@ -116,6 +118,17 @@ class _ShopPageState extends State<MyCustom>{
       }
     }
 
+    void _changeSpriteBot(){
+      if (level >= 10) {
+        setState(() {
+          botEnabled = true;
+          botPadding = 0;
+          sprite = "images/imageBot.gif";
+          sprite6 = "images/imageBot.gif";
+        });
+      }
+    }
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(108, 58, 181, 1),
       appBar: AppBar(
@@ -183,10 +196,21 @@ class _ShopPageState extends State<MyCustom>{
                           padding: EdgeInsets.all(0.0),
                           child: Image.asset(sprite6)),
                     ),
-                  ]
-              ),
             ],
-          )
+          ),
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                new Container(
+                  width: 100.0,
+                  height: 100.0,
+                  child: FlatButton(
+                      onPressed: _changeSpriteBot,
+                      padding: EdgeInsets.all(0.0),
+                      child: Image.asset(spriteBot)),
+                ),],)
+            ]
+          ),
       ),
     );
   }
@@ -505,11 +529,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       children: <Widget>[
 
-                        new Image(
-
-                          image: new AssetImage(sprite),
-                          height: 200,
-                          width: 200,
+                        new Row(
+                          children: <Widget>[
+                            new Padding(padding: EdgeInsets.only(left: botPadding)),
+                            new Image(
+                              image: new AssetImage(sprite),
+                              height: 175,
+                              width: 175,
+                            ),
+                            new Visibility(
+                              visible: botEnabled,
+                              child: new Column(
+                                children: <Widget>[
+                                  new Divider(height: 70,),
+                                  new Image(
+                                    image: new AssetImage(sprite),
+                                  height: 89,
+                                  width: 89,),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
 
 
