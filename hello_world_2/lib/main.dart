@@ -274,6 +274,8 @@ class _ShopPageState extends State<MyCustom>{
   }
 }
 
+int screams = 0;
+
 class _StatsPageState extends State<MyStats>{
   Widget build(BuildContext context) {
     int avatarNum = level;
@@ -293,7 +295,7 @@ class _StatsPageState extends State<MyStats>{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               ListTile(
-                title: Text("Times Screamed: 12", style: TextStyle(color: Colors.white)),
+                title: Text("Times Screamed: $screams", style: TextStyle(color: Colors.white)),
               ),
               ListTile(
                 title: Text("Characters typed: $score", style: TextStyle(color: Colors.white)),
@@ -460,6 +462,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     _text = _controller.text;
+    screams++;
 
     setState(() {
       levelCap = 50 * pow(2, level);
