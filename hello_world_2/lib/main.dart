@@ -463,6 +463,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     color: Colors.white,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 onTap: () {
                   Navigator.push(
