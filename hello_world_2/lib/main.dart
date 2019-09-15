@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: DrawerHeader(
                   child: Container(
                     child: Text(
-                      "Level 1",
+                      "Level " + level.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
