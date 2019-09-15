@@ -17,6 +17,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  cloud_firestore: ^0.12.9
+  firebase_core: ^0.4.0+1
   flutter:
     sdk: flutter
 
@@ -41,8 +43,8 @@ flutter:
       fonts:
         - asset: fonts/ponderosa.ttf
 
-  assets:
-    - assets/
+  #assets:
+    #- assets/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

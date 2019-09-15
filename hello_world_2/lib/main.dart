@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,6 +46,11 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+class Scream {
+  String scream;
+  Scream (scream){this.scream = scream;}
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   String _text = '';
 
@@ -72,6 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
       level++;
       score = 0;
     }
+    
+    Firestore.instance.collection('screams').document().setData({'scream': _text});
   }
 
   final TextEditingController _controller = new TextEditingController();
