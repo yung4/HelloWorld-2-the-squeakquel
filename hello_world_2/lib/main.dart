@@ -542,7 +542,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: <Widget>[
                                   new Divider(height: 70,),
                                   new Image(
-                                    image: new AssetImage(sprite),
+                                    image: new AssetImage(spriteBot),
                                   height: 89,
                                   width: 89,),
                                 ],
