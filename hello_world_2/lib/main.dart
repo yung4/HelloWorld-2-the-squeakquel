@@ -56,36 +56,51 @@ class _ShopPageState extends State<MyCustom>{
 
     void _changeSpriteTwo(){
       if (level >= 2) {
-        sprite = "images/image02.gif";
-        sprite2 = "images/image02.gif";
+        setState(() {
+          sprite = "images/image02.gif";
+          sprite2 = "images/image02.gif";
+        });
+
       }
     }
 
     void _changeSpriteThree(){
       if (level >= 3) {
-        sprite = "images/image03.gif";
-        sprite3 = "images/image03.gif";
+        setState(() {
+          sprite = "images/image03.gif";
+          sprite3 = "images/image03.gif";
+        });
+
       }
     }
 
     void _changeSpriteFour(){
       if (level >= 4) {
-        sprite = "images/image04.gif";
-        sprite4 = "images/image04.gif";
+        setState(() {
+          sprite = "images/image04.gif";
+          sprite4 = "images/image04.gif";
+        });
+
       }
     }
 
     void _changeSpriteFive(){
       if (level >= 5) {
-        sprite = "images/image05.gif";
-        sprite5 = "images/image05.gif";
+        setState(() {
+          sprite = "images/image05.gif";
+          sprite5 = "images/image05.gif";
+        });
+
       }
     }
 
     void _changeSpriteSix(){
       if (level >= 6) {
-        sprite = "images/image06.gif";
-        sprite6 = "images/image06.gif";
+        setState(() {
+          sprite = "images/image06.gif";
+          sprite6 = "images/image06.gif";
+        });
+
       }
     }
 
