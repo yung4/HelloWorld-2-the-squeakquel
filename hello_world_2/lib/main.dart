@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'into the void'),
     );
   }
 }
@@ -44,34 +44,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   String _text = '';
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  void onChanged(String value){
+  void onChanged(String value) {
     setState(() {
       _text = value;
     });
   }
 
-  void onPressed(){
+  void onPressed() {
     _text = _controller.text;
     print(_text);
     _controller.clear();
   }
 
   final TextEditingController _controller = new TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        backgroundColor: Colors.grey[850],
+        title: Text(
+          widget.title,
+          style: TextStyle(fontFamily: "ponderosa"),
+        ),
+        backgroundColor: Colors.black,
       ),
       body: Center(
-
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -110,16 +99,13 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
-
             Container(
               width: 400,
               child: TextField(
                 decoration: new InputDecoration(
                   hintText: "Scream here",
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                  ),
+                  hintStyle:
+                      TextStyle(color: Colors.grey, fontFamily: "ponderosa"),
                   //fillColor: Colors.green,
                 ),
                 style: TextStyle(
@@ -127,93 +113,61 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 50,
                 ),
                 textAlign: TextAlign.center,
-
-                onChanged: (String value){
+                onChanged: (String value) {
                   onChanged(value);
                 },
                 controller: _controller,
               ),
-
             ),
-
             Container(
               margin: EdgeInsets.only(top: 50),
-              width: 200,
+              width: 250,
               height: 100,
               child: DecoratedBox(
-                decoration: ShapeDecoration(shape: StadiumBorder(),
+                decoration: ShapeDecoration(
+                  shape: StadiumBorder(),
                   color: Colors.grey,
-
                 ),
                 child: OutlineButton(
-
                   borderSide: BorderSide(color: Colors.grey),
                   highlightedBorderColor: Colors.white,
                   shape: StadiumBorder(),
                   textColor: Colors.white,
                   color: Colors.blue,
-
-                  onPressed: (){
+                  onPressed: () {
                     onPressed();
                   },
-
                   child: Text(
                     'scream',
                     style: TextStyle(
                       fontSize: 50,
+                      fontFamily: "ponderosa",
                     ),
                   ),
-
-
                 ),
               ),
-
             ),
-
-
-
-
-
           ],
-
-
         ),
       ),
       drawer: Drawer(
-
         child: Container(
           color: Colors.grey[900],
           child: Column(
             children: <Widget>[
               Container(
                 child: DrawerHeader(
-
-//                  child: Stack(
-//                    Align(
-//                      alignment: Alignment.bottomCenter,
-//                      child: ListTile(
-//                        title: Text('hello'),
-//                        onTap: () {
-//                          Navigator.pop(context);
-//                        },
-//                      ),
-//                    ),
-//                  ),
-
-
                   child: Container(
                     child: Text(
                       "Level 1",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-
                       ),
                     ),
                     alignment: Alignment.bottomLeft,
                     padding: EdgeInsets.all(20.0),
                   ),
-
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
@@ -221,9 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
               ListTile(
-                title: Text('hello',
+                title: Text(
+                  'hello',
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -237,10 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-
-
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
