@@ -64,10 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     _controller.clear();
     if (_text.compareTo("wo mei you peng you") == 0){
       score = 51200;
+      level = 10;
     } else {
       score += _text.length;
     }
-    if (score >= (50 * pow(2,level))){
+    if (score > (50 * pow(2,level))){
       level++;
       score = 0;
     }
