@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String sprite = "images/image07.gif", spriteQuestion = "images/image07.gif";
+String sprite = "images/image07.gif", spriteQuestion = "images/image09.png";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
     sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif", spriteBot = "images/image07.gif";
 int score = 0;
@@ -64,7 +64,7 @@ class MyHomePage extends StatefulWidget {
 class _ShopPageState extends State<MyCustom>{
   Widget build(BuildContext context) {
 
-    void _inValidLevel(){
+    void _inValidLevel(int lev){
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -81,12 +81,11 @@ class _ShopPageState extends State<MyCustom>{
                       ),
                     ),
 
-                    content: new Text("Not high enough level!",
+                    content: new Text("Not high enough level! \nThis sprite requires level " + lev.toString() + ".",
 //              content: new Text("debug",
                       style: TextStyle(
                         color: Colors.white,
                       ),
-
                     ),
                     actions: <Widget>[
                       // usually buttons at the bottom of the dialog
@@ -116,7 +115,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite1 = "images/image01.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(1);
       }
     }
 
@@ -127,7 +126,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite2 = "images/image02.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(2);
       }
     }
 
@@ -138,7 +137,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite3 = "images/image03.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(3);
       }
     }
 
@@ -149,7 +148,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite4 = "images/image04.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(4);
       }
     }
 
@@ -160,7 +159,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite5 = "images/image05.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(5);
       }
     }
 
@@ -171,7 +170,7 @@ class _ShopPageState extends State<MyCustom>{
           sprite6 = "images/image06.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(6);
       }
     }
 
@@ -183,7 +182,7 @@ class _ShopPageState extends State<MyCustom>{
           spriteBot = "images/image08.gif";
         });
       } else {
-        _inValidLevel();
+        _inValidLevel(10);
       }
     }
 
