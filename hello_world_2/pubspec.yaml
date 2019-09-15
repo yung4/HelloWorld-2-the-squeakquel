@@ -46,8 +46,15 @@ flutter:
       fonts:
         - asset: fonts/ponderosa.ttf
 
-  #assets:
-    #- assets/
+  assets:
+    - assets/
+    - images/image01.gif
+    - images/image02.gif
+    - images/image03.gif
+    - images/image04.gif
+    - images/image05.gif
+    - images/image06.gif
+    - images/image07.gif
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
