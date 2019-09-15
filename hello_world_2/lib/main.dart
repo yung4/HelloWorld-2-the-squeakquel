@@ -85,12 +85,26 @@ class _MyHomePageState extends State<MyHomePage> {
         // return object of type Dialog
         return AlertDialog(
           backgroundColor: Color.fromRGBO(103, 58, 183, 50),
-          title: new Text("The Void Answers"),
-          content: new Text("Alert Dialog body"),
+          title: new Text("The Void Answers",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+
+          ),
+          content: new Text("Alert Dialog body",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+
+          ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Close"),
+              child: new Text("Close",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
