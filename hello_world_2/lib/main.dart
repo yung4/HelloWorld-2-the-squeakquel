@@ -47,6 +47,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String _text = '';
 
+  int score = 0;
+
   void onChanged(String value) {
     setState(() {
       _text = value;
@@ -57,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _text = _controller.text;
     print(_text);
     _controller.clear();
+    score += _text.length;
   }
 
   final TextEditingController _controller = new TextEditingController();
@@ -93,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 50,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 5,
                 onChanged: (String value) {
                   onChanged(value);
                 },
