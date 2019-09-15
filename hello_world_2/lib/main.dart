@@ -74,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int levelCap = 50;
 
+  int temp;
+
   double progress;
 
   void onChanged(String value) {
@@ -177,7 +179,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (score >= levelCap) {
 
-      score = 0;
+      temp = score - levelCap;
+      score = temp;
       setState(() {
         level++;
         levelCap = 50 * pow(2, level);
