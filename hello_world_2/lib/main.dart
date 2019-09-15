@@ -123,30 +123,29 @@ class _MyHomePageState extends State<MyHomePage> {
   void onPressed() {
     _text = _controller.text;
 
-    levelCap = 50 * pow(2, level);
-    print(_text.length);
-    print(levelCap);
+
+    setState(() {
+      levelCap = 50 * pow(2, level);
+    });
+
     if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
-      print('pog');
     } else {
       setState(() {
         score += _text.length;
       });;
     }
 
-
-
     if (score >= levelCap) {
       level++;
       score = 0;
+      setState(() {
+        levelCap = 50 * pow(2, level);
+      });
     }
-
     _assetsAudioPlayer.play();
-    print(_text);
     _controller.clear();
-    print(score);
   }
 
   double findProgress(){
