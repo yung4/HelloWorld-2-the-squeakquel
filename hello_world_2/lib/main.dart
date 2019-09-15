@@ -123,7 +123,7 @@ class _ShopPageState extends State<MyCustom>{
         setState(() {
           botEnabled = true;
           botPadding = 0;
-          spriteBot = "images/imageBot.gif";
+          spriteQuestion = "images/imageBot.gif";
         });
       }
     }
@@ -206,7 +206,7 @@ class _ShopPageState extends State<MyCustom>{
                   child: FlatButton(
                       onPressed: _changeSpriteBot,
                       padding: EdgeInsets.all(0.0),
-                      child: Image.asset(spriteBot)),
+                      child: Image.asset(spriteQuestion)),
                 ),],)
             ]
           ),
