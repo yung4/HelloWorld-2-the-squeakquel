@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String sprite = "";
-
 class MyCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,120 +27,16 @@ class MyCustom extends StatelessWidget {
         title: Text("CUSTOMIZE"),
       ),
       body: Center(
-          child: Column (
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-            new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteOne,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image01.gif')),
-
-                  ),
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteTwo,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image02.gif')),
-                  ),
-                  new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: FlatButton(
-                        onPressed: _changeSpriteThree,
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset('images/image03.gif')),
-                  ),
-                ]
-              ),
-
-              new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    new Container(
-                      width: 100.0,
-                      height: 100.0,
-                      child: FlatButton(
-                          onPressed: _changeSpriteFour,
-                          padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image04.gif')),
-
-                    ),
-                    new Container(
-                      width: 100.0,
-                      height: 100.0,
-                      child: FlatButton(
-                          onPressed: _changeSpriteFive,
-                          padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image05.gif')),
-                    ),
-                    new Container(
-                      width: 100.0,
-                      height: 100.0,
-                      child: FlatButton(
-                          onPressed: _changeSpriteSix,
-                          padding: EdgeInsets.all(0.0),
-                          child: Image.asset('images/image06.gif')),
-                    ),
-                  ]
-              ),
-
-            ],
-          )
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('GO BACK!'),
+        ),
       ),
     );
   }
-
-  void _changeSpriteOne(){
-      if (level >= 1){
-          sprite = "images/image01.gif";
-      }
-  }
-
-  void _changeSpriteTwo(){
-      if (level >= 2) {
-        sprite = "images/image02.gif";
-
-      }
-  }
-
-  void _changeSpriteThree(){
-    if (level >= 3) {
-      sprite = "images/image03.gif";
-
-    }
-  }
-
-  void _changeSpriteFour(){
-    if (level >= 4) {
-      sprite = "images/image04.gif";
-
-    }
-  }
-
-  void _changeSpriteFive(){
-    if (level >= 5) {
-      sprite = "images/image05.gif";
-
-    }
-  }
-
-  void _changeSpriteSix(){
-    if (level >= 6) {
-      sprite = "images/image06.gif";
-
-    }
-  }
 }
-
-int level = 0;
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -176,27 +70,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int score = 0;
 
-
+  int level = 0;
 
   int levelCap = 50;
 
-  int temp;
-
   double progress;
+
+  var planB= ['man im really hungry', 'why is programming so hard', 'firebase is a smoldering piece of garbage', 'progrum', 'wo mei you peng you', 'watch out for the shooter', "it's 3 am and i want to sleep", 'WEI SHEN ME', 'hello world!', 'hello world 2019', 'cummins is great', 'stare into the abyss and the abyss stares back', 'stack overflow is literally my best friend', 'zzzzz', 'agorize is great', "when's dinner?", 'thank God for tea', 'Boiler Up!', 'Hammer Down!', 'IU sucks', 'i bleed black and gold', 'android > apple dont @ me', 'ni mei you peng you LOL', 'i dont even know what a firebase is', 'i need more dining dollars'];
 
   void onChanged(String value) {
     setState(() {
       _text = value;
     });
-  }
-
-  int gifIndex(int level){
-    if(level < 6){
-      return level;
-    }
-    else{
-      return 6;
-    }
   }
 
   void _dialogB(){
@@ -213,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
           ),
-          content: new Text("You have been heard.",
+          content: new Text("你沒有朋友",
             style: TextStyle(
               color: Colors.white,
             ),
@@ -221,16 +106,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+//            new FlatButton(
+//              child: new Text("Close",
+//                style: TextStyle(
+//                  color: Colors.white,
+//                ),
+//              ),
+//              onPressed: () {
+//                Navigator.of(context).pop();
+//              },
+//            ),
           ],
         );
       },
@@ -294,8 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (score >= levelCap) {
 
-      temp = score - levelCap;
-      score = temp;
+      score = 0;
       setState(() {
         level++;
         levelCap = 50 * pow(2, level);
@@ -407,7 +291,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new Image(
 
-                          image: new AssetImage(sprite),
+                          image: new AssetImage("assets/boy$level.gif"),
                           height: 50,
                           width: 50,
                         ),
