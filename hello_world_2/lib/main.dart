@@ -8,10 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: "Ponderosa"
-      ),
+      theme:
+          ThemeData(primarySwatch: Colors.deepPurple, fontFamily: "Ponderosa"),
       home: MyHomePage(title: 'INTO THE VOID'),
     );
   }
@@ -21,15 +19,17 @@ class MyCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Customize"),
+        backgroundColor: Colors.black,
+        title: Text("CUSTOMIZE"),
       ),
       body: Center(
         child: RaisedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Go back!'),
+          child: Text('GO BACK!'),
         ),
       ),
     );
@@ -62,13 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
     _text = _controller.text;
     print(_text);
     _controller.clear();
-    if (_text.compareTo("wo mei you peng you") == 0){
+    if (_text.compareTo("wo mei you peng you") == 0) {
       score = 51200;
       level = 10;
     } else {
       score += _text.length;
     }
-    if (score > (50 * pow(2,level))){
+    if (score > (50 * pow(2, level))) {
       level++;
       score = 0;
     }
@@ -78,34 +78,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-
         title: Text(
           widget.title,
+          style: TextStyle(fontFamily: "ponderosa"),
         ),
         backgroundColor: Colors.black,
       ),
       body: Center(
-
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            new Image(
+              image: new AssetImage("assets/banana.gif"),
+              height: 50,
+              width: 50,
+            ),
             Container(
               width: 400,
               child: TextField(
                 decoration: new InputDecoration(
                   hintText: "Scream here",
                   hintStyle:
-                      TextStyle(color: Colors.grey),
+                      TextStyle(color: Colors.grey, fontFamily: "ponderosa"),
                   //fillColor: Colors.green,
                 ),
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 50,
+                  fontSize: 30,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 5,
@@ -172,16 +174,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ListTile(
                 title: Text(
-                  'hello',
+                  'SHOP',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
                 onTap: () {
-                 Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context)=> MyCustom(),
+                      builder: (context) => MyCustom(),
                     ),
                   );
                 },
