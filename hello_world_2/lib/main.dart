@@ -84,6 +84,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  int gifIndex(int level){
+    if(level < 6){
+      return level;
+    }
+    else{
+      return 6;
+    }
+  }
+
   void _dialogB(){
     // flutter defined function
     showDialog(
@@ -292,7 +301,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new Image(
 
-                          image: new AssetImage("assets/boy$level.gif"),
+                          image: new AssetImage("assets/boy" + gifIndex(level).toString() + ".gif"),
                           height: 50,
                           width: 50,
                         ),
