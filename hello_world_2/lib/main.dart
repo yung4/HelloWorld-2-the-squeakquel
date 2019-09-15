@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String sprite = "images/image07.gif";
+String sprite = "images/image07.gif", spriteQuestion = "images/image07.gif";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
     sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif", spriteBot = "images/image07.gif";
 int score = 0;
