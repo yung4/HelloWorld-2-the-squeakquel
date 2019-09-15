@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
 String sprite = "images/image07.gif";
 String sprite1 = "images/image07.gif", sprite2 = "images/image07.gif", sprite3 = "images/image07.gif",
     sprite4 = "images/image07.gif", sprite5 = "images/image07.gif", sprite6 = "images/image07.gif";
+int score = 0;
 
 class MyCustom extends StatefulWidget {
   MyCustom({Key key, this.title}) : super(key: key);
@@ -210,10 +211,10 @@ class _StatsPageState extends State<MyStats>{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               ListTile(
-                title: Text("Times Screamed: 0", style: TextStyle(color: Colors.white)),
+                title: Text("Times Screamed: 12", style: TextStyle(color: Colors.white)),
               ),
               ListTile(
-                title: Text("Characters typed: 0", style: TextStyle(color: Colors.white)),
+                title: Text("Characters typed: $score", style: TextStyle(color: Colors.white)),
               ),
               ListTile(
                 title: Text("Avatars Unlocked: $avatarNum", style: TextStyle(color: Colors.white)),
@@ -273,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   String _text = '';
-  int score = 0;
+
   int levelCap = 50;
   int temp;
   double progress;
