@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "59271880350",
+    "firebase_url": "https://into-the-void-c06d4.firebaseio.com",
+    "project_id": "into-the-void-c06d4",
+    "storage_bucket": "into-the-void-c06d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59271880350:android:2f35d52ac6c08fb6a2a58f",
+        "android_client_info": {
+          "package_name": "com.meiyoupengyou.hello_world_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59271880350-ls2st873v6n0sh8s8ovfunrm3j7dfno3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6a38aqrl22_RvEcDXv8JLblvuJPAw_DY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59271880350-ls2st873v6n0sh8s8ovfunrm3j7dfno3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

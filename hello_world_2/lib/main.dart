@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() => runApp(MyApp());
 
@@ -220,42 +221,57 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  int rand(length) {
+    var rng = new Random();
+    print(length);
+    return rng.nextInt(length);
+  }
 
-  void _dialogB(){
+  void _dialogB() {
     // flutter defined function
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          backgroundColor: Color.fromRGBO(103, 58, 183, 50),
-          title: new Text("The Void Answers",
-              style: TextStyle(
-                color: Colors.white,
-              ),
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return new StreamBuilder<QuerySnapshot>(
+            stream: Firestore.instance.collection('screams').snapshots(),
+            builder: (BuildContext context,
+                AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) return new Text("");
+              return AlertDialog(
+                backgroundColor: Color.fromRGBO(103, 58, 183, 50),
+                title: new Text("The Void Answers",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
 
-          ),
-          content: new Text("You have been heard.",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-
-          ),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close",
-                style: TextStyle(
-                  color: Colors.white,
                 ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
+
+                content: new Text(snapshot.data.documents[rand(
+                    snapshot.data.documents.length)]['scream'],
+//              content: new Text("debug",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+
+                ),
+                actions: <Widget>[
+                  // usually buttons at the bottom of the dialog
+                  new FlatButton(
+                    child: new Text("Close",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
     );
   }
 
@@ -277,8 +293,8 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(
               color: Colors.white,
             ),
+                ),
 
-          ),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
@@ -326,6 +342,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _dialogLevel();
 
   }
+
+    Firestore.instance.collection('screams').document().setData({'scream': _text});
 
     _assetsAudioPlayer.play();
     _controller.clear();
