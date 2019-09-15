@@ -8,10 +8,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
         fontFamily: 'Ponderosa'
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Into the Void'),
     );
   }
 }
@@ -40,7 +40,41 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.black,
+      ),
+      drawer: Drawer(
+
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: DrawerHeader(
+                  child: Center(
+                    child: Text(
+                      "Level 1",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  margin: EdgeInsets.all(0.0),
+                  padding: EdgeInsets.all(0.0),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[500],
+                  ),
+                ),
+              ),
+
+              ListTile(
+                  title: Text('hello'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+              ),
+            ],
+          ),
+        ),
       ),
       body: Center(
         child: Column(
