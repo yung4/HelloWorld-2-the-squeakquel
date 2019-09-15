@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(MyApp());
 
@@ -49,6 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int score = 0;
 
+  int level = 0;
+
   void onChanged(String value) {
     setState(() {
       _text = value;
@@ -59,7 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
     _text = _controller.text;
     print(_text);
     _controller.clear();
-    score += _text.length;
+    if (_text.compareTo("wo mei you peng you") == 0){
+      score = 51200;
+    } else {
+      score += _text.length;
+    }
+    if (score >= (50 * pow(2,level))){
+      level++;
+      score = 0;
+    }
   }
 
   final TextEditingController _controller = new TextEditingController();
