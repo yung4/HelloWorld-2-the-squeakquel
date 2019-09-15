@@ -235,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
 
           ),
-          content: new Text("You have been heard.",
+          content: new Text("You have been heard.", //from database input
             style: TextStyle(
               color: Colors.white,
             ),
