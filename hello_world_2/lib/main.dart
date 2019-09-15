@@ -672,6 +672,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 contentPadding: EdgeInsets.fromLTRB(0.0, 20, 0, 0),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -683,6 +684,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 title: Text('STATS', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -694,6 +696,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                   title: Text('SETTINGS', style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
