@@ -106,9 +106,9 @@ class _ShopPageState extends State<MyCustom>{
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromRGBO(108, 58, 181, 1),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.deepPurple,
         title: Text("CUSTOMIZE"),
       ),
       body: Center(
@@ -207,13 +207,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int score = 0;
 
-
-
   int levelCap = 50;
 
   int temp;
 
   double progress;
+
+  var planB = ['IU sucks', 'Boiler Up!', 'Hammer Down', 'hello world', 'Hello World 2019!', 'wo mei you peng you', '我沒有朋友', 'WEI SHEN ME', 'SHOUT INTO THE VOID', 'im so hungry', 'thank God for tea', 'cummins is great', 'we love agorize', 'my favorite night out is a night in', 'you have been heard. ', 'aiyah', 'wo bu zhi dao', '我可以上厠所麽？', 'firebase is a smoldering piece of garbage', 'why do i suck at coding', 'i have a math exam on monday pls help', "i'm really hungry"];
+
 
   void onChanged(String value) {
     setState(() {
@@ -315,6 +316,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     _text = _controller.text;
+
 
 
     setState(() {
