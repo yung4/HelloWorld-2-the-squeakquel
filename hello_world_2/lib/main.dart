@@ -120,6 +120,44 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void _dialogLevel(){
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          backgroundColor: Colors.deepOrange,
+          title: new Text("Level Up!",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+
+          ),
+          content: new Text("You are now level $level",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+
+          ),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void onPressed() {
     _text = _controller.text;
 
@@ -138,11 +176,14 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     if (score >= levelCap) {
-      level++;
+
       score = 0;
       setState(() {
+        level++;
         levelCap = 50 * pow(2, level);
+
       });
+      _dialogLevel();
     }
     _assetsAudioPlayer.play();
     _controller.clear();
