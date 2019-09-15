@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: "Ponderosa"
       ),
-      home: MyHomePage(title: 'into the void'),
+      home: MyHomePage(title: 'INTO THE VOID'),
     );
   }
 }
@@ -75,7 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(
           widget.title,
-          style: TextStyle(fontFamily: "ponderosa"),
         ),
         backgroundColor: Colors.black,
       ),
@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: new InputDecoration(
                   hintText: "Scream here",
                   hintStyle:
-                      TextStyle(color: Colors.grey, fontFamily: "ponderosa"),
+                      TextStyle(color: Colors.grey),
                   //fillColor: Colors.green,
                 ),
                 style: TextStyle(
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 50),
-              width: 250,
+              width: 300,
               height: 100,
               child: DecoratedBox(
                 decoration: ShapeDecoration(
@@ -138,10 +138,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed();
                   },
                   child: Text(
-                    'scream',
+                    'SCREAM',
                     style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: "ponderosa",
+                      fontSize: 40,
                     ),
                   ),
                 ),
