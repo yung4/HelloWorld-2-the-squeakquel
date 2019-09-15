@@ -57,18 +57,16 @@ class _MyHomePageState extends State<MyHomePage> {
     _assetsAudioPlayer = AssetsAudioPlayer();
     _assetsAudioPlayer.open(
       AssetsAudio(
-        asset: "mii.mp3",
+        asset: "longmii.mp3",
         folder: "assets/",
       ),
     );
-    _assetsAudioPlayer.playOrPause();
+    _assetsAudioPlayer.play();
   }
 
-  @override
-  void dispose() {
-    _assetsAudioPlayer = null;
-    super.dispose();
-  }
+
+
+
 
 
   String _text = '';
@@ -99,13 +97,17 @@ class _MyHomePageState extends State<MyHomePage> {
       level++;
       score = 0;
     }
+    _assetsAudioPlayer.play();
   }
 
   final TextEditingController _controller = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
+
 
 
       backgroundColor: Colors.black,
@@ -120,6 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
 
 
 
@@ -214,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.all(0.0),
                   padding: EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple[500],
+                    color: Colors.deepPurple[600],
                   ),
                 ),
               ),
