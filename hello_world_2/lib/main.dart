@@ -123,8 +123,7 @@ class _ShopPageState extends State<MyCustom>{
         setState(() {
           botEnabled = true;
           botPadding = 0;
-          sprite = "images/imageBot.gif";
-          sprite6 = "images/imageBot.gif";
+          spriteBot = "images/imageBot.gif";
         });
       }
     }
