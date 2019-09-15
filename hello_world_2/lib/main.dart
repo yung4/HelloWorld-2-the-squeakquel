@@ -279,7 +279,7 @@ class _StatsPageState extends State<MyStats>{
     int avatarNum = level;
 
     if(avatarNum>6) {
-      avatarNum = 6;
+      avatarNum = 7;
     }
 
     return Scaffold(
