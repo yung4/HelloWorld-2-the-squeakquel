@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.deeppurle[500],
+        primarySwatch: Colors.deepPurple,
         fontFamily: "Ponderosa"
       ),
       home: MyHomePage(title: 'INTO THE VOID'),
