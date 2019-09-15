@@ -64,12 +64,59 @@ class MyHomePage extends StatefulWidget {
 class _ShopPageState extends State<MyCustom>{
   Widget build(BuildContext context) {
 
+    void _inValidLevel(){
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            // return object of type Dialog
+            return new StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance.collection('screams').snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  return AlertDialog(
+                    backgroundColor: Color.fromRGBO(103, 58, 183, 50),
+                    title: new Text("Aiya",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+
+                    content: new Text("Not high enough level!",
+//              content: new Text("debug",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+
+                    ),
+                    actions: <Widget>[
+                      // usually buttons at the bottom of the dialog
+                      new FlatButton(
+                        child: new Text("Close",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                }
+            );
+          }
+      );
+
+    }
+
     void _changeSpriteOne(){
       if (level >= 1){
         setState(() {
           sprite = "images/image01.gif";
           sprite1 = "images/image01.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -79,6 +126,8 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image02.gif";
           sprite2 = "images/image02.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -88,6 +137,8 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image03.gif";
           sprite3 = "images/image03.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -97,6 +148,8 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image04.gif";
           sprite4 = "images/image04.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -106,6 +159,8 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image05.gif";
           sprite5 = "images/image05.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -115,6 +170,8 @@ class _ShopPageState extends State<MyCustom>{
           sprite = "images/image06.gif";
           sprite6 = "images/image06.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
@@ -123,8 +180,10 @@ class _ShopPageState extends State<MyCustom>{
         setState(() {
           botEnabled = true;
           botPadding = 0;
-          spriteBot = "images/imageBot.gif";
+          spriteBot = "images/image08.gif";
         });
+      } else {
+        _inValidLevel();
       }
     }
 
