@@ -8,10 +8,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deeppurle[500],
         fontFamily: "Ponderosa"
       ),
       home: MyHomePage(title: 'INTO THE VOID'),
+    );
+  }
+}
+
+class MyCustom extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Customize"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
     );
   }
 }
@@ -143,7 +162,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context)=> MyCustom(),
+                    ),
+                  );
                 },
               ),
             ],
